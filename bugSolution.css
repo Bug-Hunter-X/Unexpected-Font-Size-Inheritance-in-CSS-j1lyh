@@ -1,0 +1,31 @@
+To solve the unexpected inheritance, ensure that the specificity is handled correctly. One approach is to explicitly set the font size for the `a` element within the paragraph, using a more specific selector to ensure it overrides any inherited values:
+
+```css
+.container {
+  font-size: 16px;
+}
+
+.container p {
+  font-size: 18px;
+}
+
+.container p a {
+  font-size: 14px; /* This was the unexpected behavior. Now we solve it by setting it explicitly*/
+}
+```
+
+This ensures that the `a` element will always have a `font-size` of `14px`, regardless of its parent elements' font sizes.  By explicitly defining the style for `.container p a`, we ensure that this selector is more specific than the inherited font sizes and thus will be applied.
+
+Another approach, if you want the link to inherit the parent paragraph's font size is to remove the `font-size` from `.container`:
+
+```css
+.container p {
+  font-size: 18px;
+}
+
+.container p a {
+  /* Inherits the font-size from the parent <p> element */
+}
+```
+
+This way, the link will inherit the paragraph's font size and the issue is solved without explicitly setting the font size in the `a` element.
